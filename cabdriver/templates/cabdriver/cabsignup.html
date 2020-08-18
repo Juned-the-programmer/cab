@@ -1,0 +1,52 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Sign Up
+{% endblock title %}
+
+{% block content %}
+
+<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>	
+				<div class="container">
+					<div class="row fullscreen d-flex align-items-center justify-content-between">
+						<div class="banner-content col-lg-6 col-md-6 ">
+							<h6 class="text-white "></h6>
+							<h1 class="text-uppercase">
+								Sign Up Here
+							</h1>
+							<p class="pt-10 pb-10 text-white">
+								Whether you enjoy city breaks or extended holidays in the sun, you can always improve your travel experiences by staying in a small.
+							</p>
+							<a href="#" class="primary-btn text-uppercase"></a>
+						</div>
+						<div class="col-lg-4  col-md-6 header-right">
+							<h4 class="pb-30">Book Your Texi Online!</h4>
+							<form class="form" method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
+							    <div class="from-group">
+									<input class="form-control txt-field text-white" type="text" name="name" id="name" placeholder="Your name"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your name'">
+									<!-- <input class="form-control txt-field" type="text" name="last-name" id="last-name" placeholder="Your last-name"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your last-name'"> -->
+									<input class="form-control txt-field text-white" type="email" name="email" id="email" placeholder="Your Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email'">
+									<input class="form-control txt-field text-white" type="tel" name="phone" id="phone" placeholder="Phone number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'">
+								</div>								
+								<div class="form-group">
+									<input class="form-control txt-field text-white" type="text" name="username" id="username" placeholder="Your Username"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Userame'">
+									<input class="form-control txt-field text-white" type="text" name="pwd" id="Password" placeholder="Your Password"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Password'">
+									<input class="form-control txt-field text-white" type="text" name="pwd-repeat" id="Repeat-Password" placeholder="Your Repeat-Password"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Repeat-Password'">
+								</div>
+							    <div class="form-group">
+									<input class="form-control txt-field text-white" type="text" name="rick_no" id="rick_no" placeholder="Rickshaw No"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Rickshaw No'">
+									<input class="form-control txt-field text-white" type="file" name="your_image" id="your_image" placeholder="Your Image"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Image'">
+									<input class="form-control txt-field text-white" type="file" name="rick_image" id="rick_image" placeholder="Your Rickshaw Image"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Rickshaw Image'">
+								</div>				    							    
+							    <div class="form-group">
+                                    <a href="#"><button class="btn btn-default btn-lg btn-block text-center text-uppercase">Sign up</button></a>  
+							    </div>
+							</form>
+						</div>											
+					</div>
+				</div>					
+			</section>
+
+
+{% endblock content %}
