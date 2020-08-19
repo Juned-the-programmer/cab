@@ -3,7 +3,6 @@
 {% block title %}
 
 BOOK TAXI
-
 {% endblock title %}
 
 {% block content %}
@@ -24,7 +23,7 @@ BOOK TAXI
 						</div>
 					     <div class="col-lg-4  col-md-6 header-right">
 							<h4 class="pb-30">Book Your Texi Online!</h4>
-							<form class="form" method='POST' action='{% url 'listdriver' %}'>	
+							<form class="form" method='POST'>	
 							{% csrf_token %}					
 							    <div class="form-group">
 							       	<div class="default-select" id="default-select">

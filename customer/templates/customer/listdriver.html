@@ -22,7 +22,7 @@ LIST DRIVER
                     <p class="date">Join Date := {{a.date_joined}}&nbsp;&nbsp;&nbsp;&nbsp;
                     <form method='POST'>
                     {% csrf_token %}
-                    <button class="btn btn-warning" href="customer/orderlist/{{a.id}}">Book Now</button>
+                    <a class="btn btn-warning" href="/customer/orderlist/{{a.id}}">Book Now</a>
                     </form>
                     </p>
                 </div>
