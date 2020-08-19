@@ -17,8 +17,8 @@ class order(models.Model):
         return self.cname
 
 class cart(models.Model):
-    cname = models.CharField(max_length=50)
-    c_phone_no = models.IntegerField()
+    cname = models.CharField(max_length=50,null=True,blank=True)
+    c_phone_no = models.IntegerField(null=True,blank=True)
     from_desti = models.CharField(max_length=50)
     to_desti = models.CharField( max_length=50)
     date_to = models.CharField(max_length=50)

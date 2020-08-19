@@ -23,10 +23,15 @@ def booktaxi(request):
         to_desti = request.POST['to_desti']
         date_to = request.POST['datepicker2']
         time_to = request.POST['time']
-
+    
         data = Accounts.objects.get(name=request.user.username)
+        try:
+            if cart.objects.filter(cname=request.user.username).exists():
+                cart.objects.get(cname=request.user.username).delete()
+        except cart.DoesNotExist:
+            None
         card_detail = cart (
-            cname=data.name,
+            cname=request.user.username,
             c_phone_no=data.phone_no,
             from_desti = from_desti,
             to_desti= to_desti,
@@ -49,7 +54,20 @@ def listdriver(request):
     return render(request,'customer/listdriver.html',context)
  
 def orderlist(request,pk):    
+    customer_data = Accounts.objects.get(name=request.user.username)
     order_detail = driver_detail.objects.get(pk=pk)
+    cart_detail = cart.objects.get(cname=request.user.username)
+    Order = order (
+        cname=request.user.username,
+        dname=order_detail.name,
+        c_phone_no=customer_data.phone_no,
+        d_phone_no=order_detail.phone_no,
+        from_desti=cart_detail.from_desti,
+        to_desti=cart_detail.to_desti,
+        date_to=cart_detail.date_to,
+        time_to=cart_detail.time_to 
+    )
+    Order.save()
     context = {
         'order_detail':order_detail
     }
