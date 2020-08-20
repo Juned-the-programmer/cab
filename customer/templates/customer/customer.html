@@ -7,6 +7,31 @@ LIST OF ORDER
 
 {% block content %}
 
-
+{% for a in list_order %}
+<section class="latest-blog-area section-gap">
+    <div class="container mt-50">					
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="single-latest-blog">
+                    {% comment %} <div class="thumb">
+                        <img  src="{{a.your_image.url}}" alt="" height="300px" width="300px">
+                    </div> {% endcomment %}
+                    <a href="#">
+                        <h4>{{a.cname}}</h4>
+                        <h4>{{a.dname}}</h4>
+                        <h4>Rickshaw No := {{a.c_phone_no}}</h4>
+                    </a>
+                    {% comment %} <p class="date">Join Date := {{a.date_joined}}&nbsp;&nbsp;&nbsp;&nbsp; {% endcomment %}
+                    <form method='POST'>
+                    {% csrf_token %}
+                    <a class="btn btn-warning" href="/customer/orderlist/{{a.id}}">Book Now</a>
+                    </form>
+                    </p>
+                </div>
+            </div>				
+        </div>
+    </div>	
+</section>
+{% endfor %}
 
 {% endblock content %}

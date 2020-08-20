@@ -3,6 +3,7 @@ from . import views
 from pages.decoraters import *
 from .models import *
 from django.contrib.auth.models import User,auth,Group,Permission
+from customer.models  import *
 # Create your views here.
 def cabsignup(request):
     if request.method == 'POST':
@@ -36,6 +37,11 @@ def cabsignup(request):
             return redirect('index')
     return render(request,'cabdriver/cabsignup.html')
 
+
 @allowed_users(allowed_roles=['cabdriver'])
 def caborder(request):
-    return render(request,'cabdriver/caborders.html')
+    order_list = order.objects.filter(dname=request.user.username)
+    context = {
+        'order_list':order_list
+    }
+    return render(request,'cabdriver/caborders.html',context)

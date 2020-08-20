@@ -17,7 +17,7 @@
 							  {% else %}
 							  <li><a href="{% url 'booktaxi' %}">Book Taxi</a></li>
 							  <li><a href="{% url 'customer' %}">Your Order</a></li>
-							  <li><a href="{% url 'listdriver' %}">listdriver</a></li>
+							  {% comment %} <li><a href="{% url 'listdriver' %}">listdriver</a></li> {% endcomment %}
 							  {% endif %}
 							  {% endif %}
 							  {% if user.is_authenticated %}

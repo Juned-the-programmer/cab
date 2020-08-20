@@ -10,9 +10,9 @@ from datetime import datetime
 @allowed_users(allowed_roles=['customer'])
 @login_required(login_url='login')
 def customer(request):
-    taxi_driver = driver_detail.objects.all()
+    list_order = order.objects.filter(cname=request.user.username)
     context = {
-        'taxi_driver':taxi_driver
+        'list_order':list_order
     }
     return render(request,'customer/customer.html',context)
 
@@ -68,7 +68,6 @@ def orderlist(request,pk):
         time_to=cart_detail.time_to 
     )
     Order.save()
-    context = {
-        'order_detail':order_detail
-    }
-    return render(request,'customer/orderlist.html',context)
+    return redirect('customer')
+    list_order = order.objects.all()
+    return render(request,'customer/orderlist.html')
