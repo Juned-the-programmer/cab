@@ -22,9 +22,14 @@ LIST OF ORDER
                         <h4>Rickshaw No := {{a.c_phone_no}}</h4>
                     </a>
                     {% comment %} <p class="date">Join Date := {{a.date_joined}}&nbsp;&nbsp;&nbsp;&nbsp; {% endcomment %}
-                    <form method='POST'>
+                    <form method='POST' action="/customer/orderupdate/{{a.id}}">
                     {% csrf_token %}
-                    <a class="btn btn-warning" href="/customer/orderlist/{{a.id}}">Book Now</a>
+                    <select name="order_status">
+							<option value="Pending" selected>Pending</option>
+							<option value="In Transit">In Transit</option>
+						    <option value="Complete">Complete</option>
+						</select>
+                    <a class="btn btn-warning" href="/customer/orderupdate/{{a.id}}">Book Now</a>
                     </form>
                     </p>
                 </div>

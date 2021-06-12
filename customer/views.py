@@ -16,6 +16,25 @@ def customer(request):
     }
     return render(request,'customer/customer.html',context)
 
+def orderupdate(request,pk):
+    if request.method == 'POST':
+        status_order = request.POST['order_status']
+        print(status_order)
+        print('HELLO')
+
+        update_order=order.objects.get(pk=pk)
+
+        update_order.order_status = status_order
+
+        update_order.save()
+        return redirect('customer')
+
+    order_update = order.objects.get(pk=pk)
+    context = {
+        'order_update':order_update
+    }
+    return render(request,'customer/updateorder.html',context)
+
 @login_required(login_url='login')
 def booktaxi(request):
     if request.method == 'POST':
@@ -23,7 +42,8 @@ def booktaxi(request):
         to_desti = request.POST['to_desti']
         date_to = request.POST['datepicker2']
         time_to = request.POST['time']
-    
+
+        print(request.user.username)
         data = Accounts.objects.get(name=request.user.username)
         try:
             if cart.objects.filter(cname=request.user.username).exists():
@@ -47,7 +67,9 @@ def booktaxi(request):
 def listdriver(request):
     if request.method == 'POST':
         return redirect('orderlist')
-    driver_data = driver_detail.objects.all().order_by('id')
+
+        
+    driver_data = driver_detail.objects.filter(status='Available').order_by('id')
     context = {
         'driver_data':driver_data
     }
@@ -65,7 +87,8 @@ def orderlist(request,pk):
         from_desti=cart_detail.from_desti,
         to_desti=cart_detail.to_desti,
         date_to=cart_detail.date_to,
-        time_to=cart_detail.time_to 
+        time_to=cart_detail.time_to,
+        order_status= 'Booked',
     )
     Order.save()
     return redirect('customer')

@@ -11,6 +11,7 @@ class driver_detail(models.Model):
     your_image = models.ImageField(upload_to='static/img/driver_detail')
     rick_image = models.ImageField(upload_to='static/img/driver_detail')
     date_joined = models.DateField(auto_now_add=True , blank=True , null=True)
+    status = models.CharField(max_length=50,null=True,blank=True)
 
     def __str__(self):
         return self.name

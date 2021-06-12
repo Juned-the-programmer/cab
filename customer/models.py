@@ -12,6 +12,7 @@ class order(models.Model):
     to_desti = models.CharField(max_length=50,null=True,blank=True)
     date_to = models.CharField(max_length=50,null=True,blank=True)
     time_to = models.CharField(max_length=50,null=True,blank=True)
+    order_status = models.CharField(max_length=50,null=True,blank=True)
 
     def __str__(self):
         return self.cname
