@@ -50,7 +50,7 @@ def signup(request):
                 )
                 customer.save()
                 group = Group.objects.get(name='customer')
-            user.groups.add(group)
+                user.groups.add(group)
     return render(request,'pages/signup.html')
 
 def login(request):

@@ -4,8 +4,9 @@ from pages.models import *
 # Create your models here.
     
 class order(models.Model):
+    id = models.AutoField(primary_key=True)
     cname = models.CharField(max_length=50)
-    dname = models.CharField(max_length=50)
+    dname = models.ForeignKey(driver_detail ,on_delete=models.CASCADE)
     c_phone_no = models.CharField(max_length=50)
     d_phone_no = models.CharField(max_length=50)
     from_desti = models.CharField(max_length=50,null=True,blank=True)
@@ -18,6 +19,7 @@ class order(models.Model):
         return self.cname
 
 class cart(models.Model):
+    id = models.AutoField(primary_key=True)
     cname = models.CharField(max_length=50,null=True,blank=True)
     c_phone_no = models.IntegerField(null=True,blank=True)
     from_desti = models.CharField(max_length=50)

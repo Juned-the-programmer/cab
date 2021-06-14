@@ -10,6 +10,17 @@ from datetime import datetime
 @allowed_users(allowed_roles=['customer'])
 @login_required(login_url='login')
 def customer(request):
+    if request.method == 'POST':
+        order_id = request.POST['order_id']
+        order_id = int(order_id)
+        print(order_id)
+        order_status = request.POST['order_status']
+
+        update_order = order.objects.get(pk=order_id)
+        update_order.order_status = order_status
+        update_order.save()
+        return redirect('customer')
+
     list_order = order.objects.filter(cname=request.user.username)
     context = {
         'list_order':list_order
@@ -67,7 +78,6 @@ def booktaxi(request):
 def listdriver(request):
     if request.method == 'POST':
         return redirect('orderlist')
-
         
     driver_data = driver_detail.objects.filter(status='Available').order_by('id')
     context = {
@@ -78,17 +88,18 @@ def listdriver(request):
 def orderlist(request,pk):    
     customer_data = Accounts.objects.get(name=request.user.username)
     order_detail = driver_detail.objects.get(pk=pk)
+    order_detail.order_status = "Booked"
     cart_detail = cart.objects.get(cname=request.user.username)
     Order = order (
         cname=request.user.username,
-        dname=order_detail.name,
+        dname = driver_detail.objects.get(name=order_detail.name),
         c_phone_no=customer_data.phone_no,
         d_phone_no=order_detail.phone_no,
         from_desti=cart_detail.from_desti,
         to_desti=cart_detail.to_desti,
         date_to=cart_detail.date_to,
         time_to=cart_detail.time_to,
-        order_status= 'Booked',
+        order_status= 'Pending',
     )
     Order.save()
     return redirect('customer')

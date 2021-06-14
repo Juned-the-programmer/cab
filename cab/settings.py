@@ -25,6 +25,8 @@ SECRET_KEY = '-ckkqukef)^k4es(_mcnssffp)o0h5w4vplvz1^owp0x9f^apv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+
 ALLOWED_HOSTS = []
 
 MESSAGE_TAGS = {

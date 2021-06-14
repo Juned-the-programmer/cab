@@ -28,7 +28,8 @@ def cabsignup(request):
                 password = password,
                 rick_no = rick_no,
                 your_image = your_image,
-                rick_image = rick_image
+                rick_image = rick_image,
+                status = "Available",
             )
             detail.save()
             group = Group.objects.get(name='cabdriver')

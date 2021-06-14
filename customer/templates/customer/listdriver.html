@@ -7,28 +7,45 @@ LIST DRIVER
 
 {% block content %}
 {% for a in driver_data %}
-<section class="latest-blog-area section-gap">
-    <div class="container mt-50">					
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="single-latest-blog">
-                    <div class="thumb">
-                        <img  src="{{a.your_image.url}}" alt="" height="300px" width="300px">
-                    </div>
-                    <a href="#">
-                        <h4>{{a.name}}</h4>
-                        <h4>Rickshaw No := {{a.rick_no}}</h4>
-                    </a>
-                    <p class="date">Join Date := {{a.date_joined}}&nbsp;&nbsp;&nbsp;&nbsp;
-                    <form method='POST'>
-                    {% csrf_token %}
-                    <a class="btn btn-warning" href="/customer/orderlist/{{a.id}}">Book Now</a>
-                    </form>
-                    </p>
-                </div>
-            </div>				
-        </div>
-    </div>	
+<section class="sample-text-area">
+	<div class="container">
+	    <div class="section-border">
+			<div class="row">
+			<!-- cardstart -->
+				<div class="col-md-4">
+					<div class="card mt3">
+					    <div class="product-1 align-items-center p-2 text-center">
+							<a href="{{a.your_image.url}}" class="img-gal">
+                                <div class="single-gallery-image" style="background: url({{a.your_image.url}}); margin-top:10px;"></div>
+                            </a>
+						    <h3>{{a.name}}</h3>
+							<div class="mt-3 info">
+								<span class="text1 d-block text-dark"><strong>Rickshaw No:{{a.rick_no}}</strong></span>
+								<span class="text1 text-dark"><strong>Join Date : {{a.date_joined}}</strong></span>
+							</div>
+							<div class="cost mt-3 text-dark">
+								<span>Rs.99.00</span>
+								    <div class="star mt-3 align-items-center">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+							</div>								
+						</div>									
+						<!-- buttonforcard -->
+						<div class="p-3 booknow text-center text-white mt-3 cursor">
+                            <form method='POST' action="/customer/orderlist/{{a.id}}">
+                                {% csrf_token %}
+                                <span class="text-uppercase"><input type="submit" name="Book Now" class="btn btn-dark" value="Book Now"></span>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 {% endfor %}
 

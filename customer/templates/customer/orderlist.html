@@ -5,5 +5,52 @@ ORDER LIST
 {% endblock title %}
 
 {% block content %}
-
+<section class="sample-text-area">
+	<div class="container">
+		<div class="section-border">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="row">
+							<div class="col-md-4" style="padding: 30px;">
+							    <a href="img/elements/g1.jpg" class="img-gal"><img src="img/elements/g1.jpg" width="100%"></a>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<form class="row g-3">
+										<div class="col-12">
+											<label class="form-label">Name : </label>
+											<label class="form-label">Mubarka</label>
+										</div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Form : </label>
+                                            <label class="form-label">Gujarat</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">To : </label>
+                                            <label class="form-label">Bangalore</label>
+                                        </div>                              
+                                        <div class="col-12">
+                                            <label class="form-label">Date : </label>
+                                        </div>
+                                        <div class="col-md-6">										
+                                            <select class="formselect mt-10">
+                                            <option class="selectoption" selected >Choose...</option>
+                                            <option class="selectoption">Pending</option>
+                                            <option class="selectoption">Success</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-dark mt-10"> Apply </button>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock content %}
